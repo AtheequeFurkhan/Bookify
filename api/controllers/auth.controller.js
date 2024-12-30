@@ -1,7 +1,8 @@
 import User from "../models/user.model.js";
 import bcryptjs from 'bcryptjs';
+import {errorHandler} from "../utils/error.js";
 
-export const signup = async (req, res) => {
+export const signup = async (req, res ,next) => {
 
     const { username, email, password } = req.body;
     const hashedpassword = bcryptjs.hashSync(password, 12);
@@ -13,7 +14,7 @@ export const signup = async (req, res) => {
 
     }
     catch(error){
-        return res.status(400).json(error.message);
+        next(errorHandler(505, "Functional Error!"));
     }
     //201 something is created
 };
