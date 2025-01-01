@@ -15,7 +15,13 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-}, {timestamps : true});
+    profilePic:{
+        type: String,
+        default: "https://www.flaticon.com/free-icon/user_3177440?term=avatar&page=1&position=4&origin=tag&related_id=3177440",
+    },
+},
+ {timestamps : true}
+);
 
 const User = mongoose.model('User', userSchema);
 
