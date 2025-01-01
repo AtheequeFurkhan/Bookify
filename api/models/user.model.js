@@ -1,27 +1,27 @@
 import mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema({
-    username:{
+    username: {
         type: String,
         required: true,
-        unique:true,
-    },
-    email:{
+        unique: true,
+      },
+      email: {
         type: String,
         required: true,
-        unique:true,
-    },
-    password:{
+        unique: true,
+      },
+      password: {
         type: String,
         required: true,
-    },
-    profilePic:{
+      },
+      avatar:{
         type: String,
-        default: "https://www.flaticon.com/free-icon/user_3177440?term=avatar&page=1&position=4&origin=tag&related_id=3177440",
+        default: "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
+      },
     },
-},
- {timestamps : true}
-);
+    { timestamps: true }
+  );  
 
 const User = mongoose.model('User', userSchema);
 
