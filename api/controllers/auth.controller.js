@@ -36,7 +36,7 @@ export const signin = async (req, res ,next) => {
         const { password: hashedPassword, ...rest } = validUser._doc;
         res.cookie("access_token", token, { httpOnly: true  })
         .status(200)
-        .json({ rest});
+        .json({rest});
 
 
     }
@@ -49,6 +49,8 @@ export const signin = async (req, res ,next) => {
 
 export const google = async (req, res, next) => {
     try {
+        console.log('Google photo URL:', req.body.photo); // Debug log
+
         const user = await User.findOne({ email: req.body.email });
         if (user) {
             const token = jwt.sign({ id: user._id }, process.env.SECRET_KEY);

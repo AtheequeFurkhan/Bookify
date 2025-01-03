@@ -32,8 +32,7 @@ const location = useLocation();
     <Link to='/profile'>
         <img
             className='rounded-full h-7 w-7 object-cover'
-            src={currentUser.avatar || 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png'}
-            alt='profile'
+            src={currentUser.rest?.avatar || 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png'}            alt='profile'
             referrerPolicy='no-referrer'
         />
     </Link>
