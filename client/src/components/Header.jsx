@@ -29,19 +29,19 @@ const location = useLocation();
                     </Link>
                     
                     {!isAuthPage && currentUser ? (
-        <Link to='/profile'>
-            <img
-                className='rounded-full h-7 w-7 object-cover'
-                src={currentUser.rest.avatar}
-                alt='profile'
-                referrerPolicy='no-referrer'
-            />
-        </Link>
-    ) : (
-        <Link to='/sign-in'>
-            <li className='text-slate-700 hover:underline'>Sign in</li>
-        </Link>
-    )}
+    <Link to='/profile'>
+        <img
+            className='rounded-full h-7 w-7 object-cover'
+            src={currentUser.avatar || 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png'}
+            alt='profile'
+            referrerPolicy='no-referrer'
+        />
+    </Link>
+) : (
+    <Link to='/sign-in'>
+        <li className='text-slate-700 hover:underline'>Sign in</li>
+    </Link>
+)}
                 </ul>
             </div>
         </header>
