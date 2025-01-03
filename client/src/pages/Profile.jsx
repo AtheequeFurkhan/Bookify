@@ -9,7 +9,7 @@ export default function Profile() {
       Profile
         </h1>
     <form className="flex flex-col items-center gap-4">
-      {/* <img src={currentUser.user} /> */}
+      <img src={currentUser.avatar || 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png'} alt="profile" className="rounded-full h-24 w-24 object-cover cursor-pointer" />
       <input type="text" placeholder="username" className="w-80 border p-3 rounded-xl "/>
       <input type="email" placeholder="email" className="w-80 border p-3 rounded-xl "/>
       <input type="password" placeholder="password" className="w-80 border p-3 rounded-xl "/>
