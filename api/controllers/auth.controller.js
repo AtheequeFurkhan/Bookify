@@ -49,16 +49,19 @@ export const signin = async (req, res ,next) => {
 
 export const google = async (req, res, next) => {
     try {
-        console.log('Google photo URL:', req.body.photo); // Debug log
-
         const user = await User.findOne({ email: req.body.email });
         if (user) {
             const token = jwt.sign({ id: user._id }, process.env.SECRET_KEY);
             const { password: pass, ...rest } = user._doc;
+            // Update existing user's avatar if different
+            if (req.body.photo && req.body.photo !== user.avatar) {
+                await User.findByIdAndUpdate(user._id, { avatar: req.body.photo });
+                rest.avatar = req.body.photo;
+            }
             res
                 .cookie('access_token', token, { httpOnly: true })
                 .status(200)
-                .json(rest);
+                .json({ rest }); // Wrap in rest object for consistency
         } else {
             const newUser = new User({
                 username: req.body.name.split(' ').join('').toLowerCase() +
@@ -69,15 +72,15 @@ export const google = async (req, res, next) => {
                     Math.random().toString(36).slice(-8),
                     10
                 ),
-                avatar: req.body.photo,
+                avatar: req.body.photo
             });
             await newUser.save();
             const token = jwt.sign({ id: newUser._id }, process.env.SECRET_KEY);
-            const { password: pass, ...rest } = newUser._doc; // Changed from user to newUser
+            const { password: pass, ...rest } = newUser._doc;
             res
                 .cookie('access_token', token, { httpOnly: true })
                 .status(200)
-                .json(rest);
+                .json({ rest }); // Wrap in rest object for consistency
         }
     } catch (error) {
         next(error);
