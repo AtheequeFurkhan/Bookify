@@ -1,6 +1,8 @@
 import { useSelector } from "react-redux"
+import { useRef } from "react";
 
 export default function Profile() {
+  const fileRef = useRef(null);
   const { currentUser } = useSelector((state) => state.user);
   
   return (
@@ -9,7 +11,9 @@ export default function Profile() {
         Profile
       </h1>
       <form className="flex flex-col items-center gap-4">
-        <img 
+         Firebase plan need to be updated 3.45 *
+        <input type="file" ref={fileRef} hidden accept="image/*"/>
+        <img onClick={() => fileRef.current.click()}
           src={currentUser?.rest?.avatar || 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png'} 
           alt="profile" 
           className="rounded-full h-24 w-24 object-cover cursor-pointer"
