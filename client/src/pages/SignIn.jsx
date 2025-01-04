@@ -48,45 +48,102 @@ export default function SignIn() {
   };
 
   return (
-    <div className='p-4 max-w-lg ms-auto me-auto'>
+<section className="min-h-screen bg-gradient-to-br from-green-950 via-slate-900 to-emerald-950">
+<div className="flex flex-col items-center justify-center px-6 py-8 mx-auto h-screen lg:py-0">
+        <Link to="/" className="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
+          <img className="mt-20 h-16 justify-center" src="/bookify-2.png" alt="logo" />
       
-      <h1 className='text-3xl font-bold text-center mt-10 '>
-        Sign In
-      </h1>
-      <form onSubmit = {handleSubmit} className= 'flex flex-col gap-4 my-10'>
-        <input type="text" placeholder="Username" className='p-3 rounded-lg border-2' id="username" onChange = {handleChange}/>
-        {/* <input type="email" placeholder="Email" className='p-3 rounded-lg border-2' id="email" onChange = {handleChange}/> */}
-        <input type="password" placeholder="Password" className='p-3 rounded-lg border-2' id="password" onChange={handleChange} />        
-        <button 
-        disabled={loading} 
-        className='bg-slate-700 text-white p-3 rounded-lg uppercase hover:opacity-90 disabled:opacity-80 flex items-center justify-center'
-      >
-        {loading ? (
-          <>
-            <svg className="animate-spin h-5 w-5 mr-3" viewBox="0 0 24 24">
-              <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
-              <path d="M4 12a8 8 0 018-8" stroke="currentColor" strokeWidth="4" strokeLinecap="round" />
-            </svg>
-            Loading...
-          </>
-        ) : (
-          'Log In'
-        )}
-      </button>
-      <OAuth />
-      </form>
-      <div className='flex gap-6 justify-center '>
-        <p>
-          Dont Have an account?
-        </p>
-        <Link to={"/sign-up"} className='text-slate-700 hover:underline'>
-          <span className="text-blue-800">
-          Sign Up
-          </span>
         </Link>
+        
+        <div className="w-full bg-gradient-to-br from-slate-200/90 to-gray-100/90 backdrop-blur-sm rounded-lg shadow-xl border border-slate-200/30 md:mt-0 sm:max-w-md xl:p-0 dark:bg-gradient-to-br dark:from-slate-800/80 dark:to-gray-700/80 dark:border-slate-700/30">               <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
+            <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
+              Sign in to your account
+            </h1>
+            
+            <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
+              <div>
+                <label htmlFor="username" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                  Your username
+                </label>
+                <input
+                  type="text"
+                  id="username"
+                  onChange={handleChange}
+                  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
+                  placeholder="username"
+                  required
+                />
+              </div>
+              
+              <div>
+                <label htmlFor="password" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                  Password
+                </label>
+                <input
+                  type="password"
+                  id="password"
+                  onChange={handleChange}
+                  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
+                  placeholder="••••••••"
+                  required
+                />
+              </div>
+              
+              <div className="flex items-center justify-between">
+                <div className="flex items-start">
+                  <div className="flex items-center h-5">
+                    <input
+                      id="remember"
+                      aria-describedby="remember"
+                      type="checkbox"
+                      className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
+                    />
+                  </div>
+                  <div className="ml-3 text-sm">
+                    <label htmlFor="remember" className="text-gray-500 dark:text-gray-300">Remember me</label>
+                  </div>
+                </div>
+                <Link to="/forgot-password" className="text-sm font-medium text-blue-600 hover:underline dark:text-blue-500">
+                  Forgot password?
+                </Link>
+              </div>
+              
+              <button
+                type="submit"
+                disabled={loading}
+                className="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+              >
+                {loading ? (
+                  <div className="flex items-center justify-center">
+                    <svg className="animate-spin h-5 w-5 mr-3" viewBox="0 0 24 24">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"/>
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"/>
+                    </svg>
+                    Signing in...
+                  </div>
+                ) : 'Sign in'}
+              </button>
+              
+              <div className="my-4">
+                <OAuth />
+              </div>
+              
+              <p className="text-sm font-light text-gray-500 dark:text-gray-400">
+                Don't have an account yet?{' '}
+                <Link to="/sign-up" className="font-medium text-blue-600 hover:underline dark:text-blue-500">
+                  Sign up
+                </Link>
+              </p>
+            </form>
+            
+            {error && (
+              <div className="p-4 mt-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+                {error}
+              </div>
+            )}
+          </div>
+        </div>
       </div>
-      {error && <p className='text-red-500 text-center mt-4'>{error}</p>}
-      
-      </div>
-  )
+    </section>
+  );
 }
