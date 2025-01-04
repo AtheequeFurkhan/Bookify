@@ -56,10 +56,24 @@ export default function SignIn() {
       <form onSubmit = {handleSubmit} className= 'flex flex-col gap-4 my-10'>
         <input type="text" placeholder="Username" className='p-3 rounded-lg border-2' id="username" onChange = {handleChange}/>
         {/* <input type="email" placeholder="Email" className='p-3 rounded-lg border-2' id="email" onChange = {handleChange}/> */}
-        <input type="password" placeholder="Password" className='p-3 rounded-lg border-2' id="password" onChange={handleChange} />        <button disabled={loading} className='bg-slate-700 text-white p-3 rounded-lg uppercase hover:opacity-90 disabled:opacity-80'>
-          {loading ? 'Loading...' : 'Log In'}
-        </button>
-        <OAuth/>
+        <input type="password" placeholder="Password" className='p-3 rounded-lg border-2' id="password" onChange={handleChange} />        
+        <button 
+        disabled={loading} 
+        className='bg-slate-700 text-white p-3 rounded-lg uppercase hover:opacity-90 disabled:opacity-80 flex items-center justify-center'
+      >
+        {loading ? (
+          <>
+            <svg className="animate-spin h-5 w-5 mr-3" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
+              <path d="M4 12a8 8 0 018-8" stroke="currentColor" strokeWidth="4" strokeLinecap="round" />
+            </svg>
+            Loading...
+          </>
+        ) : (
+          'Log In'
+        )}
+      </button>
+      <OAuth />
       </form>
       <div className='flex gap-6 justify-center '>
         <p>
