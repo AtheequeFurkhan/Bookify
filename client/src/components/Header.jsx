@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 
+
 export default function Header() {
 const { currentUser } = useSelector((state) => state.user);
 const location = useLocation();

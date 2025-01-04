@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+
 body{
     background-color:rgb(241, 245, 241); ;
+}
+
+
+@layer base {
+  :root {
+        --radius:0.5rem; 
+    } 
 }
