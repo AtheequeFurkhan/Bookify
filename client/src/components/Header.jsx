@@ -11,11 +11,11 @@ const location = useLocation();
         <header className='bg-slate-200'>
             <div className='flex justify-between items-center max-w-6xl mx-auto p-3'>
                 <Link to='/' className='text-slate-800 text-xl font-bold'>
-                    <h1 className='font-bold text-sm sm:tex-xl flex flex-wrap '>
-                        <span className='text-slate-400'>Book</span>
-                        <span className='text-slate-800'>Ify</span>
-                    </h1>
-                </Link>
+                <img 
+    src="bookify-2.png" 
+    alt="Bookify" 
+    className="w-20 object-contain flex-shrink-0 p-0 m-0" 
+/>                </Link>
                 <form className='bg-slate-100 p-3 rounded-lg flex items-center'>
                     <input type='text' placeholder='Search....' className='bg-transparent focus:outline-none w-40 sm:w-70' />
                     <FaSearch className='text-slate-800' />
