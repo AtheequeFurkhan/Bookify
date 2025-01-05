@@ -48,16 +48,13 @@ export default function SignIn() {
   };
 
   return (
-<section className="min-h-screen bg-gradient-to-br from-green-950 via-slate-900 to-emerald-950">
-<div className="flex flex-col items-center justify-center px-6 py-8 mx-auto h-screen lg:py-0">
-        <Link to="/" className="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
-          <img className="mt-20 h-16 justify-center" src="/bookify-2.png" alt="logo" />
-      
-        </Link>
+<section className="min-h-screen bg-gradient-to-br from-green-950 via-slate-900 to-emerald-950 pb-10">
+<div className="flex flex-col items-center justify-center px-2 py-8 mx-auto h-screen lg:py-0">
         
-        <div className="w-full bg-gradient-to-br from-slate-200/90 to-gray-100/90 backdrop-blur-sm rounded-lg shadow-xl border border-slate-200/30 md:mt-0 sm:max-w-md xl:p-0 dark:bg-gradient-to-br dark:from-slate-800/80 dark:to-gray-700/80 dark:border-slate-700/30">               <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
+        <div className="w-full bg-gradient-to-br from-slate-200/90 to-gray-100/90 backdrop-blur-sm rounded-lg shadow-xl border border-slate-200/30 md:mt-0 sm:max-w-md xl:p-0 dark:bg-gradient-to-br dark:from-slate-800/80 dark:to-gray-700/80 dark:border-slate-700/30">              
+         <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
             <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
-              Sign in to your account
+              Login in to your account
             </h1>
             
             <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
