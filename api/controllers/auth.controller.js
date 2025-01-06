@@ -47,6 +47,43 @@ export const signin = async (req, res ,next) => {
 
 };
 
+/**
+ * Handles Google OAuth authentication
+ * @async
+ * @param {Object} req - Express request object
+ * @param {Object} req.body - Request body
+ * @param {string} req.body.email - User's email from Google
+ * @param {string} req.body.name - User's full name from Google
+ * @param {string} req.body.photo - User's avatar URL from Google
+ * @param {Object} res - Express response object
+ * @param {Function} next - Express next middleware function
+ * @throws {Error} Forwards any errors to error handling middleware
+ * @returns {Promise<void>} JSON response with user data and sets httpOnly cookie
+ * @description
+ * Authenticates users via Google OAuth:
+ * - If user exists: updates avatar if needed, creates JWT token
+ * - If new user: creates account with random password, creates JWT token
+ * In both cases, sets httpOnly cookie with JWT token and returns user data
+ */
+
+/**
+ * Handles Google OAuth authentication and user management
+ * @async
+ * @param {Object} req - Express request object
+ * @param {Object} req.body - Request body
+ * @param {string} req.body.email - User's email from Google
+ * @param {string} req.body.name - User's full name from Google
+ * @param {string} req.body.photo - User's avatar URL from Google
+ * @param {Object} res - Express response object
+ * @param {Function} next - Express next middleware function
+ * @returns {Promise<void>} - Returns user data with JWT token in cookie
+ * @throws {Error} Forwards any errors to error handling middleware
+ * @description
+ * Authenticates users via Google OAuth:
+ * - If user exists: Updates avatar if needed and creates new JWT token
+ * - If new user: Creates account with random password and username derived from Google name
+ * In both cases, sets httpOnly cookie with JWT token and returns user data
+ */
 export const google = async (req, res, next) => {
     try {
         const user = await User.findOne({ email: req.body.email });
