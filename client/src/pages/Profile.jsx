@@ -1,16 +1,51 @@
 import { useSelector } from "react-redux"
-import { useRef } from "react";
+import { useRef, useState } from "react";
+import { updateUserSuccess , updateUserFailure , updateUserStart } from "../redux/user/userSlice.js";
+import { useDispatch } from "react-redux";
 
 export default function Profile() {
   const fileRef = useRef(null);
   const { currentUser } = useSelector((state) => state.user);
+  const [formData, setFormData] = useState({});
+  const dispatch = useDispatch();
+  const handleChange = (e) => {
+
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    })
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+  
+    try {
+      dispatch(updateUserStart());
+      const res = await fetch(`/api/user/update/${currentUser.rest._id}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData),
+      });
+  
+      const data = await res.json();
+      if (data.success === false) {
+        dispatch(updateUserFailure(data.message));
+        return;
+      }
+      dispatch(updateUserSuccess(data));
+    } catch (error) {
+      dispatch(updateUserFailure(error.message));
+    }
+  };
   
   return (
     <div className="p-3 max-w-lg mx-auto">
       <h1 className='text-3xl font-semibold text-center my-7'>
         Profile
       </h1>
-      <form className="flex flex-col items-center gap-4">
+      <form onSubmit={handleSubmit} className="flex flex-col items-center gap-4">
          Firebase plan need to be updated 3.45 *
         <input type="file" ref={fileRef} hidden accept="image/*"/>
         <img onClick={() => fileRef.current.click()}
@@ -21,18 +56,23 @@ export default function Profile() {
         />
         <input 
           type="text" 
+          name="username"
           placeholder="username" 
           defaultValue={currentUser?.rest?.username}
           className="w-80 border p-3 rounded-xl"
+          onChange={handleChange}
         />
         <input 
           type="email" 
+          name="email"
           placeholder="email" 
           defaultValue={currentUser?.rest?.email}
           className="w-80 border p-3 rounded-xl"
+          onChange={handleChange}
         />
         <input 
           type="password" 
+          name="password"
           placeholder="Password" 
           className="w-80 border p-3 rounded-xl"
         />

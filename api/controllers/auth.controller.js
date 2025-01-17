@@ -20,6 +20,15 @@ export const signup = async (req, res ,next) => {
     //201 something is created
 };
 
+/**
+ * Generates a unique username based on the user's name
+ * @param {string} name - User's full name
+ * @returns {string} Generated username
+ */
+const generateUsername = (name) => {
+    return name.split(' ').join('').toLowerCase() + Math.random().toString(36).slice(-4);
+};
+
 //sign in 
 
 export const signin = async (req, res ,next) => {
@@ -80,11 +89,10 @@ export const google = async (req, res, next) => {
             res
                 .cookie('access_token', token, { httpOnly: true })
                 .status(200)
-                .json({ rest }); // Wrap in rest object for consistency
+                .json({ ...rest }); // Wrap in rest object for consistency
         } else {
             const newUser = new User({
-                username: req.body.name.split(' ').join('').toLowerCase() +
-                    Math.random().toString(36).slice(-4),
+                username: generateUsername(req.body.name),
                 email: req.body.email,
                 password: bcryptjs.hashSync(
                     Math.random().toString(36).slice(-8) +
