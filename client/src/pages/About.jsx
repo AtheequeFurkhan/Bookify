@@ -2,12 +2,12 @@
 export default function About() {
   return (
     <div className='py-20 px-4 max-w-6xl mx-auto'>
-      <h1 className='text-3xl font-bold mb-4 text-slate-800'>About Sahand Estate</h1>
-      <p className='mb-4 text-slate-700'>Sahand Estate is a leading real estate agency that specializes in helping clients buy, sell, and rent properties in the most desirable neighborhoods. Our team of experienced agents is dedicated to providing exceptional service and making the buying and selling process as smooth as possible.</p>
+      <h1 className='text-3xl font-bold mb-4 text-slate-800'>About Bookify</h1>
+      <p className='mb-4 text-slate-700'>Bookify is a modern ticket booking system designed to help you book tickets for various events, flights, hotels, and more. With Bookify, you can easily search for available options, make reservations, and manage your bookings all in one place.</p>
       <p className='mb-4 text-slate-700'>
-      Our mission is to help our clients achieve their real estate goals by providing expert advice, personalized service, and a deep understanding of the local market. Whether you are looking to buy, sell, or rent a property, we are here to help you every step of the way.
+      Our mission is to make booking simple, fast, and convenient for everyone. Whether you are looking to book tickets for events, flights, hotels, or other services, we are here to help you every step of the way with our user-friendly platform.
       </p>
-      <p className='mb-4 text-slate-700'>Our team of agents has a wealth of experience and knowledge in the real estate industry, and we are committed to providing the highest level of service to our clients. We believe that buying or selling a property should be an exciting and rewarding experience, and we are dedicated to making that a reality for each and every one of our clients.</p>
+      <p className='mb-4 text-slate-700'>Our platform provides a seamless experience with secure payment processing, real-time availability updates, and comprehensive booking management. We believe that booking should be hassle-free and enjoyable, and we are dedicated to making that a reality for each and every one of our users.</p>
     </div>
   )
 }
